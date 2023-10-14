@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Calculadora</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <style>
+        
+        
+        body {
+           
+            background-image: linear-gradient(120deg, #154594 0%, #445861 100%);
+            color: rgb(19, 17, 17);
+            font-size: 40px;
+
+            
+        }
+        input{
+            width: 270px;
+            height: 47px;
+            border-radius: 10px;
+            padding: 7px;
+        }
+
+        form{
+            text-align: center;
+            color: rgb(247, 243, 243);
+            
+            
+            margin-top: 10%;
+        }
+
+        #resultado{
+            text-align: center;
+            
+        
+        }
+        .navbar {
+            overflow: hidden;
+            background-color: #11043a;
+            border-radius: 10px;
+        }
+        .navbar a {
+            
+            float: left;
+            font-size: 25px;
+            color: rgb(253, 253, 253);
+            text-align: center;
+            padding: 10px 36px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #082d70;
+            color: rgb(247, 240, 240);
+        }
+        p{
+            font-size: 25px;
+            width: 350px;
+            border: 1px solid;
+            padding: 5%;
+            border-radius: 10px;
+            color: white;
+            
+        }
+        .offcanvas-body{
+            background-color: #082d70;
+        }
+        #cal{
+            width: 200px;
+            height: 80px;
+        }
+    </style>
+
+</head>
+
+<body>
+  <header>
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">COMO FUNCIONA O CALCULO</button>
+
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"></h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <p>O Índice de Massa Corporal (IMC) é uma medida que usa a seguinte fórmula matemática:<br><br>
+
+        IMC = Peso (kg) / (Altura (m) x Altura (m))<br><br>
+        
+        Peso é medido em quilogramas (kg).<br><br>
+        Altura é medida em metros (m).p>
+  </div>
+</div>
+  </header>
+
+
+
+  <div id="carouselExampleFade" class="carousel slide carousel-fade">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="img/pcristo.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="img/prrua.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="img/prua.jpg" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <main>
+    <form onsubmit="return calcular(event)">
+        <label>Digite seu peso</label><br>
+        <input type="text" name="peso" id="peso" placeholder="Exemplo 75:"><br>
+
+        <label>Digite sua Altura</label><br>
+        <input type="text" name="altura" id="altura" placeholder="Exemplo 1.70:"> <br>
+
+
+        <input type="submit" value="Calcular" id="cal">
+        <div id="resultado"></div><br><br>
+    </form>
+  </main>
+  <footer>
+    <!-- place footer here -->
+    
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+    <script>
+        var peso;
+        var altura;
+        var imc;
+        var resultado;
+
+        function calcular(event){
+            event.preventDefault()
+            peso = document.getElementById('peso').value;
+            altura = document.getElementById('altura').value;
+            resultado = document.getElementById('resultado')
+
+            imc = peso / (altura * altura)
+
+            if (imc < 17){
+                resultado.innerHTML = imc +" Significa que está muito Abaixo do peso <h1>REPROVADO</h1>"
+            }
+
+            else if(imc >= 17 && imc <= 18.49){
+                resultado.innerHTML = imc +" Significa que está Abaixo <h1>REPROVADO</h1>"
+            }
+            else if(imc >=18.5 && imc <=24.99){
+                resultado.innerHTML = imc +" Peso Normal <h1>APROVADO</h1>"
+            }
+
+            else if(imc >=25 && imc <= 29.99){
+                resultado.innerHTML = imc +" Significa que está Acima do peso <h1>REPROVADO</h1>"
+            }
+            else if(imc > 29.99){
+                resultado.innerHTML = imc +" Risco de Vida <h1>REPROVADO</h1>"
+            }
+
+        
+
+            
+
+
+
+
+
+        }
+
+
+
+    </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
